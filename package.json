@@ -1,0 +1,29 @@
+{
+  "name": "@fariamedia/firebase-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whoisaf/firebase-functions.git"
+  },
+  "author": "Andrew Faria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whoisaf/firebase-functions/issues"
+  },
+  "homepage": "https://github.com/whoisaf/firebase-functions#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "@fariamedia/firebase-utils": "^1.0.6",
+    "cors": "^2.8.5"
+  }
+}
