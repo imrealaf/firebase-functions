@@ -8,7 +8,6 @@ module.exports = (auth, utils, config) => {
     verifyEmailRedirect,
     welcomeEmailTemplate,
     settings,
-    extraFields,
   } = config.user;
   const { firestore, mail } = utils;
 
@@ -20,7 +19,7 @@ module.exports = (auth, utils, config) => {
    * createAccount
    * @param {UserRecord} user
    */
-  const createAccount = async (user) => {
+  const createAccount = async (user, extraFields = {}) => {
     const { uid, email, displayName } = user;
     const data = Object.assign(
       {},
@@ -38,11 +37,9 @@ module.exports = (auth, utils, config) => {
    * sendWelcomeEmail
    * @param {UserRecord} user
    */
-  const sendWelcomeEmail = async (user) => {
+  const sendWelcomeEmail = async (user, emailOptions = {}) => {
     // Set email to address
-    const emailOptions = {
-      to: user.email,
-    };
+    emailOptions.to = user.email;
 
     // Generate verification link
     try {
@@ -73,7 +70,7 @@ module.exports = (auth, utils, config) => {
    * @param {Request} req
    * @param {Response} res
    */
-  const sendVerifyEmail = (req, res) => {
+  const sendVerifyEmail = (req, res, emailOptions = {}) => {
     return cors(req, res, async () => {
       if (req.method !== "POST" || !req.body.email) return res.status(403);
 
@@ -85,9 +82,7 @@ module.exports = (auth, utils, config) => {
       const user = userRes.toJSON();
 
       // Set email to address
-      const emailOptions = {
-        to: user.email,
-      };
+      emailOptions.to = user.email;
 
       // Generate verification link
       try {
