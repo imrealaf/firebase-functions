@@ -1,14 +1,14 @@
 const cors = require("cors")({ origin: true });
 
 module.exports = (auth, utils, config) => {
-  const { appTitle } = config;
   const {
+    appTitle,
     usersCollection,
     verifyEmailTemplate,
     verifyEmailRedirect,
     welcomeEmailTemplate,
     settings,
-  } = config.user;
+  } = config;
   const { firestore, mail } = utils;
 
   const actionCodeSettings = {
